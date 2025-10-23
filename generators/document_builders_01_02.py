@@ -2,6 +2,35 @@
 """
 FILE PURPOSE: Spec-driven section builders for Documents 01 (Product Portfolio) and 02 (Sourcing Philosophy)
 
+⚠️ ⚠️ ⚠️  CRITICAL: NO HALLUCINATIONS ALLOWED  ⚠️ ⚠️ ⚠️
+
+THIS GENERATOR MUST ONLY READ DATA FROM JSON FILES.
+
+FORBIDDEN (Will break build & block commits):
+❌ Hard-coded dictionaries (origin_stories = {...}, use_cases = {...}, etc.)
+❌ Fabricated statistics or industry data
+❌ Invented corporate case studies or details
+❌ Made-up competitive comparisons
+❌ Any content not in JSON files
+
+ALLOWED:
+✅ Reading from data_source.get_*() methods
+✅ Reading from products/*.json
+✅ Simple formatting/structuring of JSON data
+✅ Markdown templates (structural, not data)
+
+IF YOU NEED MORE DATA:
+1. Add it to JSON files in flyberry_oct_restart/extracted_data/ FIRST
+2. THEN read from JSON in this generator
+3. NEVER hard-code data in Python
+
+ENFORCEMENT:
+- Pre-commit hook will block commits with hard-coded data
+- Tests will fail if hallucinations detected
+- Validator script scans for forbidden patterns
+
+⚠️ ⚠️ ⚠️  VIOLATION = BUILD FAILURE  ⚠️ ⚠️ ⚠️
+
 CONTEXT: Part of the gradual migration from hardcoded markdown to spec-driven generation.
 These builders read from spec files and generate markdown dynamically from structured data.
 Replaces hardcoded sections in act1_generator.py lines 114-252.

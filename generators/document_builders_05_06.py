@@ -1,6 +1,41 @@
 """
 FILE PURPOSE: Spec-driven section builders for Documents 05 (Fortune 500 Validation) and 06 (Brand Promise)
 
+⚠️ ⚠️ ⚠️  CRITICAL: NO HALLUCINATIONS ALLOWED  ⚠️ ⚠️ ⚠️
+
+THIS GENERATOR MUST ONLY READ DATA FROM JSON FILES.
+
+FORBIDDEN (Will break build & block commits):
+❌ Hard-coded dictionaries (client_stories = [...], case_studies = [...], etc.)
+❌ Fabricated corporate details (volumes, employees, audit results)
+❌ Invented case studies or testimonials
+❌ Made-up competitive comparisons
+❌ Any content not in corporate-clients.json
+
+ALLOWED:
+✅ Reading from corporate-clients.json (client name, sector, use case, testimonial)
+✅ Reading from certifications.json
+✅ Simple formatting/structuring of JSON data
+✅ Markdown templates (structural, not data)
+
+CORPORATE DATA RULES (STRICTLY ENFORCED):
+- Use ONLY: Client name, sector, since year, use case, testimonial (from JSON)
+- DO NOT invent: Specific volumes (500kg/month), employee counts, audit details,
+  case study narratives, challenge-solution stories
+
+IF YOU NEED MORE DATA:
+1. Get client approval for specific details FIRST
+2. Add to corporate-clients.json with verified data
+3. THEN read from JSON in this generator
+4. NEVER hard-code corporate data in Python
+
+ENFORCEMENT:
+- Pre-commit hook specifically checks for fabricated corporate phrases
+- Tests will fail if invented corporate details detected
+- Validator script scans for forbidden patterns
+
+⚠️ ⚠️ ⚠️  VIOLATION = BUILD FAILURE  ⚠️ ⚠️ ⚠️
+
 CONTEXT: Part of the progressive refactoring from hardcoded generators to spec-driven builders.
          These builders read document specs and generate content dynamically from structured data.
 

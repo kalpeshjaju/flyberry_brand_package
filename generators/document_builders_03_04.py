@@ -2,6 +2,36 @@
 """
 FILE PURPOSE: Spec-driven section builders for Documents 03 (Hero Products) and 04 (Nutritional Excellence)
 
+⚠️ ⚠️ ⚠️  CRITICAL: NO HALLUCINATIONS ALLOWED  ⚠️ ⚠️ ⚠️
+
+THIS GENERATOR MUST ONLY READ DATA FROM JSON FILES.
+
+FORBIDDEN (Will break build & block commits):
+❌ Hard-coded dictionaries (origin_stories = {...}, use_cases = {...}, etc.)
+❌ Fabricated statistics or industry data
+❌ Invented product details not in JSON
+❌ Made-up nutritional claims
+❌ Any content not in JSON files
+
+ALLOWED:
+✅ Reading from data_source.get_*() methods
+✅ Reading from products/*.json
+✅ Reading from claims-registry.json
+✅ Simple formatting/structuring of JSON data
+✅ Markdown templates (structural, not data)
+
+IF YOU NEED MORE DATA:
+1. Add it to JSON files in flyberry_oct_restart/extracted_data/ FIRST
+2. THEN read from JSON in this generator
+3. NEVER hard-code data in Python
+
+ENFORCEMENT:
+- Pre-commit hook will block commits with hard-coded data
+- Tests will fail if hallucinations detected
+- Validator script scans for forbidden patterns
+
+⚠️ ⚠️ ⚠️  VIOLATION = BUILD FAILURE  ⚠️ ⚠️ ⚠️
+
 CONTEXT: Part of brand package generation system that converts structured data into markdown documents.
 These builders read spec files and generate document sections dynamically from JSON data sources.
 
