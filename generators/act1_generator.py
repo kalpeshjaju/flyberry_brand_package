@@ -1,12 +1,21 @@
 #!/usr/bin/env python3
 """
-Act 1 Generator - WHO WE ARE
+Act 1 Generator - WHO WE ARE (Hybrid Spec-Driven)
 
-Generates Act 1 markdown dynamically from structured JSON data.
-NO static markdown allowed - all content from INPUT folder.
+ARCHITECTURE:
+- Document 00 (Brand Foundation): SPEC-DRIVEN (reads from doc-00-brand-foundation.md spec)
+- Documents 01-06: HARDCODED (for now - will be migrated to specs later)
+
+Generates Act 1 markdown dynamically from structured JSON data + specs.
+NO static markdown allowed - all content from INPUT folder + specs.
 
 Source: flyberry_oct_restart/extracted_data/
+Specs: flyberry_oct_restart/extracted_data/act-1-document-specs/
 """
+
+from pathlib import Path
+from generators.spec_parser import parse_document_spec
+from generators.data_helpers import get_all_brand_foundation_sections
 
 def generate_act1_markdown(data_source):
     """
@@ -27,6 +36,14 @@ def generate_act1_markdown(data_source):
     origins = data_source.get_sourcing_origins()
     nutritional_highlights = data_source.get_nutritional_highlights()
 
+    # Load brand foundation sections (spec-driven)
+    brand_sections = get_all_brand_foundation_sections()
+
+    # Parse Document 00 spec
+    spec_dir = Path("/Users/kalpeshjaju/Development/flyberry_oct_restart/extracted_data/act-1-document-specs")
+    doc00_spec_path = spec_dir / "doc-00-brand-foundation.md"
+    doc00_spec = parse_document_spec(doc00_spec_path) if doc00_spec_path.exists() else None
+
     # Start building markdown
     md = f"""# Act 1: WHO WE ARE
 **Foundation & Heritage**
@@ -37,7 +54,7 @@ def generate_act1_markdown(data_source):
 
 ## Quick Navigation
 
-- **[00: Brand Foundation](#document-00-brand-foundation)** - {brand['name']}, our tagline, and brand promise
+- **[00: Brand Foundation](#document-00-brand-foundation)** - Mission, vision, essence, and strategic positioning
 - **[01: Product Portfolio](#document-01-product-portfolio)** - {len(products)} premium products ({len(products_by_cat['dates'])} dates + {len(products_by_cat['nuts'])} nuts)
 - **[02: Sourcing Philosophy](#document-02-sourcing-philosophy)** - Global sourcing from {len(origins)} countries
 - **[03: Hero Products](#document-03-hero-products)** - {len(hero_products)} standout products with unique features
@@ -48,58 +65,57 @@ def generate_act1_markdown(data_source):
 ---
 
 ## DOCUMENT 00: Brand Foundation
-**Read Time**: 3 minutes | **Next**: [01 - Product Portfolio](#document-01-product-portfolio)
+**Read Time**: {doc00_spec['read_time'] if doc00_spec else '8 minutes'} | **Next**: [01 - Product Portfolio](#document-01-product-portfolio)
 
-**What This Is**: Our brand identity, mission, and what makes Flyberry unique.
-
----
-
-### WHO WE ARE
-
-**Brand Name**: {brand['name']}
-
-**Tagline**: "{brand['tagline']}"
-
-**Brand Typography**:
-- **Primary Font**: {brand['typography']['primary']} (Titles, Headlines)
-- **Secondary Font**: {brand['typography']['secondary']} (Body copy, Subheadings)
+**What This Is**: {doc00_spec['purpose'].split(chr(10))[0] if doc00_spec else 'Our brand foundation'}
 
 ---
-
-### OUR MISSION
-
-To make premium, globally-sourced dates and exotic nuts accessible to everyone in India, while maintaining the highest standards of quality through our cold chain infrastructure.
-
----
-
-### WHAT MAKES US DIFFERENT
 
 """
 
-    # Add unique differentiators from data
-    md += """**1. Global Sourcing Excellence**
-"""
-    md += f"We source from **{len(origins)} countries** across the world:\n"
-    for origin in origins:
-        md += f"- {origin}\n"
+    # Build Document 00 sections from spec (spec-driven)
+    if doc00_spec:
+        section_mapping = {
+            'THE ESSENCE OF FLYBERRY': 'BRAND ESSENCE',
+            'OUR MISSION': 'MISSION',
+            'OUR VISION': 'VISION',
+            'STRATEGIC POSITIONING': 'STRATEGIC POSITIONING',
+            'INNOVATION DNA': 'INNOVATION DNA',
+            'THE CUSTOMER TRUTH': 'THE CUSTOMER TRUTH',
+            'CATEGORY STRATEGY': 'HOW INNOVATION SHOWS UP ACROSS CATEGORIES',
+            'BRAND PROMISE': 'BRAND PROMISE',
+            'THE FUTURE': None,  # Not in brand-foundation.md
+            'YOU EXPERIENCE THE DIFFERENCE': 'YOU EXPERIENCE THE DIFFERENCE',
+        }
 
-    md += f"""
+        for section in doc00_spec['sections']:
+            section_title = section['title']
+            brand_key = section_mapping.get(section_title)
 
-**2. Premium Product Range**
-- **{len(products_by_cat['dates'])} Date Varieties**: From everyday favorites to ultra-premium selections
-- **{len(products_by_cat['nuts'])} Exotic Nuts**: World's finest nuts with exceptional nutritional profiles
+            # Skip if no mapping or section not found
+            if not brand_key:
+                continue
 
-**3. Cold Chain Infrastructure**
-India's only cold chain system for dates, ensuring softness and freshness from origin to delivery.
+            # Get content from brand foundation
+            content = brand_sections.get(brand_key, '')
 
-**4. Fortune 500 Trust**
-Trusted by 50+ Fortune 500 companies for corporate gifting and employee wellness programs.
+            # Special handling for first section (THE ESSENCE)
+            if section_title == 'THE ESSENCE OF FLYBERRY':
+                md += f"## {section_title}\n\n"
+                md += '> **"We reimagine food with artful nuance."**\n'
+                md += '> Fine taste. Clean ingredients. World-class quality.\n\n'
+                md += "Flyberry isn't another snack brand or dry fruit seller. We're a gourmet brand **relentlessly building to be #1 in every category we enter** - through obsessive sourcing, innovation, and craft.\n\n"
+                md += "This is the foundation. This is who we are.\n\n---\n\n"
+            elif content:
+                md += f"## {section_title}\n\n{content}\n\n---\n\n"
+    else:
+        # Fallback if spec not found
+        md += "*(Document 00 spec not found - using fallback)*\n\n---\n\n"
 
----
+    md += "*Continue to: [01 - Product Portfolio](#document-01-product-portfolio) → \"Our complete product range\"*\n\n---\n\n"
 
-*Continue to: [01 - Product Portfolio](#document-01-product-portfolio) → "Our complete product range"*
-
----
+    # Documents 01-06 remain hardcoded (for now)
+    md += """
 
 
 ## DOCUMENT 01: Product Portfolio

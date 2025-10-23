@@ -7,7 +7,7 @@
 
 ## Quick Navigation
 
-- **[00: Brand Foundation](#document-00-brand-foundation)** - Flyberry Gourmet, our tagline, and brand promise
+- **[00: Brand Foundation](#document-00-brand-foundation)** - Mission, vision, essence, and strategic positioning
 - **[01: Product Portfolio](#document-01-product-portfolio)** - 13 premium products (8 dates + 5 nuts)
 - **[02: Sourcing Philosophy](#document-02-sourcing-philosophy)** - Global sourcing from 11 countries
 - **[03: Hero Products](#document-03-hero-products)** - 2 standout products with unique features
@@ -18,56 +18,112 @@
 ---
 
 ## DOCUMENT 00: Brand Foundation
-**Read Time**: 3 minutes | **Next**: [01 - Product Portfolio](#document-01-product-portfolio)
+**Read Time**: 5 minutes | **Next**: [01 - Product Portfolio](#document-01-product-portfolio)
 
-**What This Is**: Our brand identity, mission, and what makes Flyberry unique.
-
----
-
-### WHO WE ARE
-
-**Brand Name**: Flyberry Gourmet
-
-**Tagline**: "Your Healthy Neighbourhood Food Store"
-
-**Brand Typography**:
-- **Primary Font**: Baloo (Titles, Headlines)
-- **Secondary Font**: Nunito (Body copy, Subheadings)
+**What This Is**: Establish complete brand foundation - mission, vision, essence, strategic positioning, innovation DNA, category strategy, brand promise.
 
 ---
 
-### OUR MISSION
+## THE ESSENCE OF FLYBERRY
 
-To make premium, globally-sourced dates and exotic nuts accessible to everyone in India, while maintaining the highest standards of quality through our cold chain infrastructure.
+> **"We reimagine food with artful nuance."**
+> Fine taste. Clean ingredients. World-class quality.
+
+Flyberry isn't another snack brand or dry fruit seller. We're a gourmet brand **relentlessly building to be #1 in every category we enter** - through obsessive sourcing, innovation, and craft.
+
+This is the foundation. This is who we are.
 
 ---
 
-### WHAT MAKES US DIFFERENT
+## OUR MISSION
 
-**1. Global Sourcing Excellence**
-We source from **11 countries** across the world:
-- Brazil / Bolivia
-- China / Korea
-- Iran
-- Iraq
-- Jordan
-- Jordan / Palestine
-- Kenya / Australia
-- Saudi Arabia
-- Tunisia
-- Turkey / Italy
-- USA
+To deliver India's finest-tasting gourmet products - sourced from the world's best origins, crafted with obsessive quality control, and made with nothing but natural goodness.
 
+No nasties. No compromises. Just exceptional taste and quality you can trust.
 
-**2. Premium Product Range**
-- **8 Date Varieties**: From everyday favorites to ultra-premium selections
-- **5 Exotic Nuts**: World's finest nuts with exceptional nutritional profiles
+---
 
-**3. Cold Chain Infrastructure**
-India's only cold chain system for dates, ensuring softness and freshness from origin to delivery.
+## OUR VISION
 
-**4. Fortune 500 Trust**
-Trusted by 50+ Fortune 500 companies for corporate gifting and employee wellness programs.
+To be the default choice for discerning Indians who refuse to settle - the place you turn to when only the finest taste, cleanest ingredients, and world-class quality will do.
+
+---
+
+## STRATEGIC POSITIONING
+
+### WHAT MAKES FLYBERRY DIFFERENT
+
+We don't just compete in categories - we're relentlessly building to dominate them.
+
+Our obsession: Create #1 products in every category we enter - #1 in taste, #1 in quality, #1 in ingredients.
+
+How we're building category leadership:
+
+- Premium dates → Building to be #1 through cold chain innovation (India's only)
+- Gourmet vegetable chips → Building to be #1 in okra chips, vacuum-fried excellence
+- Exotic nuts → Building to be #1 in variety (Afghan pine nuts, Australian macadamia)
+
+This isn't about quick wins - it's about relentless pursuit of excellence through:
+
+- Fine taste: World-class inputs from 11 countries, craft expertise, innovation
+- Clean ingredients: 100% natural, no nasties, transparent sourcing
+- Uncompromising quality: Standards so high, Fortune 500 companies trust us
+
+---
+
+## INNOVATION DNA
+
+### THE CORE QUESTION
+
+"What if everyday foods - okra, dates, nuts - could be transformed through imagination, taste, and craft? What if we applied world-class innovation to what people already know and love?"
+
+This isn't about creating another snack brand or dry fruit seller.
+
+This is about reimagining food itself - taking what exists and making it extraordinary through innovation and craftsmanship, then becoming the undisputed #1.
+
+---
+
+## THE CUSTOMER TRUTH
+
+You know okra. You know dates. You know nuts.
+
+But you've never tasted them like this.
+
+You taste the difference. Softer dates. Vegetable chips that actually taste like vegetables. Nuts with flavor profiles you didn't know existed.
+
+Flyberry takes foods you recognize and transforms them through:
+
+- Fine taste: Vacuum-fried technology, premium sourcing, craft expertise
+- Clean ingredients: Natural goodness, no nasties, transparent origins
+- World-class quality: Standards so high, Fortune 500 companies trust us
+
+---
+
+## BRAND PROMISE
+
+#1 in quality. #1 in innovation. #1 in every category we choose to enter.
+
+Relentless pursuit of #1 in every category we enter.
+
+Our Pillars:
+
+✅ Fine taste - Best-in-class inputs, world-class sourcing, craft innovation
+
+✅ Clean goodness - 100% natural, no nasties, transparent origins
+
+✅ Trusted quality - Fortune 500 companies, obsessive QC
+
+✅ Category ambition - Building to dominate through excellence, not shortcuts
+
+---
+
+## YOU EXPERIENCE THE DIFFERENCE
+
+You taste the difference.
+
+You trust the quality.
+
+You won't settle for less.
 
 ---
 
@@ -76,10 +132,12 @@ Trusted by 50+ Fortune 500 companies for corporate gifting and employee wellness
 ---
 
 
+
+
 ## DOCUMENT 01: Product Portfolio
 **Read Time**: 5 minutes | **Previous**: [00 - Brand Foundation](#document-00-brand-foundation) | **Next**: [02 - Sourcing Philosophy](#document-02-sourcing-philosophy)
 
-**What This Is**: Complete overview of our 13 premium products.
+**What This Is**: Complete overview of our {len(products)} premium products.
 
 ---
 
@@ -87,13 +145,13 @@ Trusted by 50+ Fortune 500 companies for corporate gifting and employee wellness
 
 | Category | Count | Examples |
 |----------|-------|----------|
-| **Dates** | 8 | Deglet Nour Dates, Deri Dates, Medjoul Dates |
-| **Exotic Nuts** | 5 | Hazelnuts, Brazil Nuts, Pine Nuts |
-| **TOTAL** | **13** | Premium imported products |
+| **Dates** | {len(products_by_cat['dates'])} | {', '.join([p['name'] for p in products_by_cat['dates'][:3]])} |
+| **Exotic Nuts** | {len(products_by_cat['nuts'])} | {', '.join([p['name'] for p in products_by_cat['nuts'][:3]])} |
+| **TOTAL** | **{len(products)}** | Premium imported products |
 
 ---
 
-### DATE VARIETIES (8 varieties)
+### DATE VARIETIES ({len(products_by_cat['dates'])} varieties)
 
 #### Deglet Nour Dates
 **Tagline**: Delectable Deglet Nour Dates
