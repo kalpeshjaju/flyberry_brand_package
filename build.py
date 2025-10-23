@@ -19,6 +19,7 @@ from data_integration import get_data_source
 
 # Import generators
 from generators.act1_generator import generate_act1_markdown
+from generators.act2_generator import generate_act2_markdown
 
 # Configuration
 SOURCE_DIR = Path("source")
@@ -176,8 +177,17 @@ def generate_dynamic_acts(data_source):
     act1_file.write_text(act1_md, encoding='utf-8')
     print(f"  ✅ Act 1 generated ({len(act1_md)} chars)")
 
-    # TODO: Add generators for Acts 2-5
-    print("  ⏭️  Acts 2-5 using static markdown (will be migrated)")
+    # Generate Act 2 from Q1 FY26 data
+    print("  → Generating Act 2 from Q1 FY26 financials...")
+    act2_md = generate_act2_markdown()
+
+    # Write Act 2 to source directory
+    act2_file = SOURCE_DIR / "act-2-where-we-are.md"
+    act2_file.write_text(act2_md, encoding='utf-8')
+    print(f"  ✅ Act 2 generated ({len(act2_md)} chars)")
+
+    # TODO: Add generators for Acts 3-5
+    print("  ⏭️  Acts 3-5 using static markdown (will be migrated)")
 
 
 def build_act(act_info, prev_act=None, next_act=None):
