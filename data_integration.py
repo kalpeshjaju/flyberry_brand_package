@@ -48,7 +48,7 @@ class BrandPackageDataSource:
         print(f"✅ Loaded {len(self.products)} products")
         print(f"✅ Loaded {len(self.recipes)} recipes")
         print(f"✅ Loaded design system")
-        print(f"✅ Loaded {len(self.claims.get('claimsRegistry', {}).get('claims', []))} health claims")
+        print(f"✅ Loaded {len(self.claims.get('claims', []))} health claims ({self.claims.get('claimsRegistry', {}).get('totalClaims', 0)} unique claim types)")
 
     def get_brand_info(self):
         """Get brand name, tagline, typography"""
