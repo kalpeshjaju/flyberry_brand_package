@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flyberry Brand Package - Strategic direction for ₹35 Cr → ₹100 Cr growth journey">
+    <title>Flyberry Brand Package | Strategic Direction</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .index-hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .index-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .index-hero .subtitle {
+            font-size: 1.5rem;
+            color: #d4762c;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .index-hero .description {
+            font-size: 1.1rem;
+            color: #e5e7eb;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .acts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .act-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 0;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .act-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .act-card-header {
+            background: #d4762c;
+            color: white;
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        .act-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .act-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .act-card-body {
+            padding: 25px;
+        }
+
+        .act-subtitle {
+            font-size: 1.1rem;
+            color: #d4762c;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .act-description {
+            font-size: 0.95rem;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .act-documents {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-bottom: 15px;
+        }
+
+        .act-cta {
+            display: inline-block;
+            background: #d4762c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .act-cta:hover {
+            background: #b8631f;
+        }
+
+        .package-stats {
+            background: #f9fafb;
+            padding: 50px 0;
+            margin: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #d4762c;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .journey-section {
+            margin: 60px 0;
+            padding: 50px 0;
+            background: linear-gradient(135deg, #fef3e7 0%, #ffffff 100%);
+        }
+
+        .journey-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+        }
+
+        .journey-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .journey-step {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            border: 2px solid #d4762c;
+            font-weight: 600;
+            color: #1a1a1a;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .journey-arrow {
+            font-size: 2rem;
+            color: #d4762c;
+        }
+
+        .footer-cta {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-cta p {
+            font-size: 1.1rem;
+            color: #e5e7eb;
+            margin-bottom: 30px;
+        }
+
+        .footer-cta .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-cta .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .footer-cta .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: #d4762c;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1a1a1a;
+        }
+
+        @media (max-width: 768px) {
+            .index-hero h1 {
+                font-size: 2rem;
+            }
+
+            .index-hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .acts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-flow {
+                flex-direction: column;
+            }
+
+            .journey-arrow {
+                transform: rotate(90deg);
+            }
+
+            .footer-cta h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="index-hero">
+        <div class="container">
+            <h1>Flyberry Brand Package</h1>
+            <p class="subtitle">Strategic Direction for ₹35 Cr → ₹100 Cr Growth Journey</p>
+            <p class="description">
+                A comprehensive 5-act strategic roadmap to reposition Flyberry from "healthy snacks" to
+                "India's Luxury Gourmet Dates Specialist, Trusted by Fortune 500, Accessible to Everyone"
+            </p>
+        </div>
+    </section>
+
+    <!-- Package Stats -->
+    <section class="package-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Strategic Acts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">26</div>
+                    <div class="stat-label">Documents</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Fortune 500 Clients</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">₹100 Cr</div>
+                    <div class="stat-label">Target Revenue (FY29)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Flow -->
+    <section class="journey-section">
+        <div class="container">
+            <h2 class="journey-title">The Strategic Journey</h2>
+            <div class="journey-flow">
+                <div class="journey-step">WHO WE ARE</div>
+                <div class="journey-arrow">→</div>
+                <div class="journey-step">WHERE WE ARE</div>
+                <div class="journey-arrow">→</div>
+                <div class="journey-step">DISCOVERIES</div>
+                <div class="journey-arrow">→</div>
+                <div class="journey-step">MARKET PROOF</div>
+                <div class="journey-arrow">→</div>
+                <div class="journey-step">WHERE TO GO</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acts Grid -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <div class="acts-grid">
+                <!-- Act 1 -->
+                <a href="act-1-who-we-are.html" class="act-card">
+                    <div class="act-card-header">
+                        <div class="act-number">1</div>
+                        <h2 class="act-title">WHO WE ARE</h2>
+                    </div>
+                    <div class="act-card-body">
+                        <p class="act-subtitle">Foundation & Heritage</p>
+                        <p class="act-description">
+                            Flyberry's origin story, sourcing philosophy from 7 countries, hero products
+                            (Date Bites, Medjoul Dates, Pine Nuts), Fortune 500 validation, and the brand promise.
+                        </p>
+                        <p class="act-documents">📄 7 Documents | 🕐 45 min read</p>
+                        <span class="act-cta">Read Act 1 →</span>
+                    </div>
+                </a>
+
+                <!-- Act 2 -->
+                <a href="act-2-where-we-are.html" class="act-card">
+                    <div class="act-card-header">
+                        <div class="act-number">2</div>
+                        <h2 class="act-title">WHERE WE ARE TODAY</h2>
+                    </div>
+                    <div class="act-card-body">
+                        <p class="act-subtitle">Current State Assessment</p>
+                        <p class="act-description">
+                            Brutal brand audit: ₹35 Cr reality, brand positioning gap (mid-market packaging vs
+                            premium pricing), competitive reality (Happilo, Farmley, Bateel), and the ₹100 Cr blockers.
+                        </p>
+                        <p class="act-documents">📄 5 Documents | 🕐 40 min read</p>
+                        <span class="act-cta">Read Act 2 →</span>
+                    </div>
+                </a>
+
+                <!-- Act 3 -->
+                <a href="act-3-discoveries.html" class="act-card">
+                    <div class="act-card-header">
+                        <div class="act-number">3</div>
+                        <h2 class="act-title">WHAT WE DISCOVERED</h2>
+                    </div>
+                    <div class="act-card-body">
+                        <p class="act-subtitle">Insights & Opportunities</p>
+                        <p class="act-description">
+                            Customer deep dive (3 segments), 6 market opportunities (luxury specialist, natural protein,
+                            corporate year-round), competitive gaps, and 10 strategic discoveries validated.
+                        </p>
+                        <p class="act-documents">📄 5 Documents | 🕐 35 min read</p>
+                        <span class="act-cta">Read Act 3 →</span>
+                    </div>
+                </a>
+
+                <!-- Act 4 -->
+                <a href="act-4-market-proof.html" class="act-card">
+                    <div class="act-card-header">
+                        <div class="act-number">4</div>
+                        <h2 class="act-title">MARKET PROOF</h2>
+                    </div>
+                    <div class="act-card-body">
+                        <p class="act-subtitle">Validation Before Strategy</p>
+                        <p class="act-description">
+                            Evidence-based validation: Premium positioning (80% proof), Fortune 500 trust transfer
+                            (+44% conversion), cold chain value (+31% conversion), market readiness confirmed.
+                        </p>
+                        <p class="act-documents">📄 4 Documents | 🕐 30 min read</p>
+                        <span class="act-cta">Read Act 4 →</span>
+                    </div>
+                </a>
+
+                <!-- Act 5 -->
+                <a href="act-5-where-to-go.html" class="act-card">
+                    <div class="act-card-header">
+                        <div class="act-number">5</div>
+                        <h2 class="act-title">WHERE WE SHOULD GO</h2>
+                    </div>
+                    <div class="act-card-body">
+                        <p class="act-subtitle">Strategy Based on Evidence</p>
+                        <p class="act-description">
+                            Strategic recommendation: "Luxury Gourmet Dates Specialist, Trusted by Fortune 500."
+                            Complete brand repositioning plan, 18-month roadmap, ₹35 Cr → ₹135 Cr revenue model.
+                        </p>
+                        <p class="act-documents">📄 4 Documents | 🕐 35 min read</p>
+                        <span class="act-cta">Read Act 5 →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <div class="container">
+            <h2>Ready to Transform Flyberry?</h2>
+            <p>From ₹35 Cr to ₹100 Cr in 3 years. Evidence-based. Action-ready.</p>
+            <div class="button-group">
+                <a href="act-1-who-we-are.html" class="btn btn-primary">Start with Act 1 →</a>
+                <a href="act-5-where-to-go.html" class="btn btn-secondary">Jump to Strategy →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Flyberry Brand Package | Version 1.0 | Created: October 2025</p>
+                <p>Strategic Direction for ₹35 Cr → ₹100 Cr Growth Journey</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
