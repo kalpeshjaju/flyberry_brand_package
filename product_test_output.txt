@@ -1,0 +1,160 @@
+[0;36m======================================================================[0m
+[0;36mPRODUCT VALIDATION TEST SUITE[0m
+[0;36mTesting actual product functionality and output quality[0m
+[0;36m======================================================================[0m
+Date: 2025-10-24 22:19:43
+
+
+[1;33m=== SECTION 1: Fresh Build Test ===[0m
+Generating fresh HTML output...
+
+  Cleaning previous build...
+  Running build process...
+  [0;32m✅ Build Process[0m
+     Build completed successfully
+  [0;32m✅ Generate act-1-who-we-are.html[0m
+     Size: 36,598 bytes
+  [0;32m✅ Generate act-2-where-we-are.html[0m
+     Size: 15,425 bytes
+  [0;32m✅ Generate act-3-discoveries.html[0m
+     Size: 58,578 bytes
+  [0;32m✅ Generate act-4-market-proof.html[0m
+     Size: 41,236 bytes
+  [0;32m✅ Generate act-5-where-to-go.html[0m
+     Size: 60,179 bytes
+  [0;32m✅ Index navigation page[0m
+     Size: 6,040 bytes
+
+[1;33m=== SECTION 2: Content Accuracy Test ===[0m
+Validating HTML content matches source data...
+
+  [0;32m✅ Product: Medjoul Dates[0m
+     Found in Act 1
+  [0;32m✅ Product: Ajwa Dates[0m
+     Found in Act 1
+  [0;32m✅ Product: Brazil Nuts[0m
+     Found in Act 1
+  [0;32m✅ Product: Macadamia Nuts[0m
+     Found in Act 1
+  [0;32m✅ Product Count[0m
+     HTML: 13, Data: 13
+  [0;32m✅ Brand Name[0m
+     Flyberry brand name present
+  [0;32m✅ Section: Origin Story[0m
+     Section found
+  [0;32m✅ Section: Product Portfolio[0m
+     Section found
+  [0;32m✅ Section: Brand Promise[0m
+     Section found
+
+[1;33m=== SECTION 3: Navigation & Links Test ===[0m
+Testing navigation between pages...
+
+  [0;32m✅ Index Page Links[0m
+     Found 5 Act links
+  [0;32m✅ Act 1 Navigation[0m
+     Has nav and home link
+  [0;32m✅ Act 2 Navigation[0m
+     Has nav and home link
+  [0;32m✅ Act 3 Navigation[0m
+     Has nav and home link
+  [0;32m✅ Act 4 Navigation[0m
+     Has nav and home link
+  [0;32m✅ Act 5 Navigation[0m
+     Has nav and home link
+  [0;32m✅ act-1-who-we-are.html Structure[0m
+     Valid HTML structure
+  [0;32m✅ act-5-where-to-go.html Structure[0m
+     Valid HTML structure
+  [0;32m✅ act-4-market-proof.html Structure[0m
+     Valid HTML structure
+  [0;32m✅ act-3-discoveries.html Structure[0m
+     Valid HTML structure
+  [0;32m✅ act-2-where-we-are.html Structure[0m
+     Valid HTML structure
+
+[1;33m=== SECTION 4: Data Representation Test ===[0m
+Verifying data is accurately displayed...
+
+  [0;32m✅ Medjoul Name[0m
+     Found: Medjoul Dates
+  [0;32m✅ Medjoul Origin[0m
+     Found: Imported Product of Jordan / Palestine
+  [0;32m✅ Medjoul Tagline[0m
+     Tagline displayed
+  [0;32m✅ Recipe Data[0m
+     11 recipes in system
+  [0;32m✅ Financial Data[0m
+     Found: revenue, growth, performance, FY
+  [0;32m✅ Customer Segments[0m
+     5 segments loaded
+
+[1;33m=== SECTION 5: User Experience Test ===[0m
+Testing overall user experience...
+
+  [0;32m✅ CSS Styles[0m
+     Stylesheet present
+  [0;32m✅ CSS Linked[0m
+     Styles properly linked
+  [0;32m✅ Heading Structure[0m
+     3 H1, 8 H2 tags
+  [0;32m✅ Content Formatting[0m
+     134 paragraphs, 12 lists
+  [0;32m✅ Page Size[0m
+     Total: 0.21MB - Good for web
+  [0;32m✅ Mobile Support[0m
+     Viewport meta tag present
+  [0;32m✅ Page Title[0m
+     Title tag present
+
+[1;33m=== SECTION 6: Reference Data System Test ===[0m
+Testing reference data handling...
+
+📦 Loading structured data from INPUT folder...
+✅ Loaded 13 products
+✅ Loaded 11 recipes
+✅ Loaded design system
+✅ Loaded 42 health claims (42 unique claim types)
+  [0;32m✅ Missing Data Detection[0m
+     Detected 6 missing files
+  [0;32m✅ Track customer-testimonial...[0m
+     Correctly identified as missing
+  [0;32m✅ Track market-trends-refere...[0m
+     Correctly identified as missing
+  [0;32m✅ Track market-size-referenc...[0m
+     Correctly identified as missing
+  [0;32m✅ Track market-validation-re...[0m
+     Correctly identified as missing
+  [0;32m✅ Track trend-analysis-refer...[0m
+     Correctly identified as missing
+  [0;32m✅ Track expansion-opportunit...[0m
+     Correctly identified as missing
+  [0;32m✅ Reference Files[0m
+     Found 1 reference file(s)
+     - competitors-reference.json: medium confidence
+
+[0;36m======================================================================[0m
+[0;36mPRODUCT TEST SUMMARY[0m
+[0;36m======================================================================[0m
+
+Total Tests: 48
+[0;32mPassed: 48 (100.0%)[0m
+[0;31mFailed: 0 (0.0%)[0m
+[1;33mWarnings: 0[0m
+
+[0;34mCategory Breakdown:[0m
+  Build: [0;32m7/7 passed[0m
+  Content: [0;32m9/9 passed[0m
+  Navigation: [0;32m11/11 passed[0m
+  Data: [0;32m6/6 passed[0m
+  User_Experience: [0;32m15/15 passed[0m
+
+[0;36m======================================================================[0m
+[0;32m✅ PRODUCT VALIDATION: PASSED[0m
+The Flyberry Brand Package is working as expected!
+[0;36m======================================================================[0m
+
+📄 Detailed report saved to: PRODUCT_TEST_REPORT.json
+📂 HTML output available at: docs/index.html
+
+To view the product, open: file:///Users/kalpeshjaju/Development/flyberry_brand_package/docs/index.html

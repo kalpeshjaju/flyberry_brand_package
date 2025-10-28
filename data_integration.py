@@ -79,6 +79,155 @@ class BrandPackageDataSource:
         nuts = [p for p in self.products if 'nuts' in p['productId']]
         return {"dates": dates, "nuts": nuts}
 
+    def check_data_completeness(self):
+        """
+        Check what reference data is missing for complete brand package
+
+        Returns list of missing reference files with details
+        """
+        required_references = {
+            'act1': {
+                'files': [],  # Core data complete from products/recipes
+                'status': 'complete'
+            },
+            'act2': {
+                'files': [],  # Financial data from investor-updates.json
+                'status': 'complete'
+            },
+            'act3': {
+                'files': [
+                    {
+                        'name': 'customer-testimonials-reference.json',
+                        'description': 'Real customer testimonials and reviews',
+                        'sources': ['Google Reviews', 'Social Media', 'Customer Surveys']
+                    },
+                    {
+                        'name': 'market-trends-reference.json',
+                        'description': 'Current market trends in premium snacking',
+                        'sources': ['Industry Reports', 'Market Research']
+                    }
+                ],
+                'status': 'needs_reference'
+            },
+            'act4': {
+                'files': [
+                    {
+                        'name': 'competitors-reference.json',
+                        'description': 'Competitor pricing and positioning',
+                        'sources': ['Bateel', 'Sukkary', 'Al Marai', 'Other premium brands']
+                    },
+                    {
+                        'name': 'market-size-reference.json',
+                        'description': 'Market size and growth data for premium dates/nuts',
+                        'sources': ['Industry Reports', 'Government Data', 'Trade Associations']
+                    },
+                    {
+                        'name': 'market-validation-reference.json',
+                        'description': 'Third-party validation and certifications',
+                        'sources': ['Industry Awards', 'Media Coverage', 'Certifications']
+                    }
+                ],
+                'status': 'needs_reference'
+            },
+            'act5': {
+                'files': [
+                    {
+                        'name': 'trend-analysis-reference.json',
+                        'description': 'Future trends and opportunities',
+                        'sources': ['Trend Reports', 'Consumer Research', 'Industry Forecasts']
+                    },
+                    {
+                        'name': 'expansion-opportunities-reference.json',
+                        'description': 'Geographic and product expansion opportunities',
+                        'sources': ['Market Analysis', 'Distribution Opportunities']
+                    }
+                ],
+                'status': 'needs_reference'
+            }
+        }
+
+        missing = []
+        for act, config in required_references.items():
+            for file_info in config.get('files', []):
+                file_path = INPUT_FOLDER / "extracted_data" / file_info['name']
+                if not file_path.exists():
+                    missing.append({
+                        'act': act,
+                        'file': file_info['name'],
+                        'description': file_info['description'],
+                        'sources': file_info['sources'],
+                        'path': str(file_path),
+                        'impact': f'Incomplete {act.upper()} - missing {file_info["description"]}'
+                    })
+
+        return missing
+
+    def get_reference_data(self, reference_file):
+        """
+        Load reference data file with confidence tracking
+
+        Args:
+            reference_file: Name of reference JSON file
+
+        Returns:
+            Dict with data and metadata, or None if not found
+        """
+        import json
+
+        file_path = INPUT_FOLDER / "extracted_data" / reference_file
+        if file_path.exists():
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+
+                # Add confidence indicator if not present
+                if 'metadata' in data and 'confidence' not in data['metadata']:
+                    # Determine confidence based on source
+                    if 'source' in data['metadata']:
+                        source = data['metadata']['source'].lower()
+                        if 'official' in source or 'government' in source:
+                            data['metadata']['confidence'] = 'high'
+                        elif 'claude' in source or 'llm' in source:
+                            data['metadata']['confidence'] = 'medium'
+                        else:
+                            data['metadata']['confidence'] = 'low'
+
+                return data
+        return None
+
+    def list_reference_files(self):
+        """
+        List all reference files available
+
+        Returns:
+            List of reference file names with metadata
+        """
+        import json
+
+        reference_files = []
+        extracted_path = INPUT_FOLDER / "extracted_data"
+
+        # Find all *-reference.json files
+        for file_path in extracted_path.glob("*-reference.json"):
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+
+                reference_files.append({
+                        'file': file_path.name,
+                        'source': data.get('metadata', {}).get('source', 'unknown'),
+                        'date': data.get('metadata', {}).get('date', 'unknown'),
+                        'confidence': data.get('metadata', {}).get('confidence', 'unknown'),
+                        'has_data': 'data' in data and bool(data['data'])
+                    })
+            except:
+                # If can't read, just note the file exists
+                reference_files.append({
+                    'file': file_path.name,
+                    'error': 'Could not read file'
+                })
+
+        return reference_files
+
     def get_fortune_500_validation(self):
         """
         Get Fortune 500 validation data

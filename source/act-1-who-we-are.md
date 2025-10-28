@@ -9,7 +9,7 @@
 
 - **[00: Brand Foundation](#document-00-brand-foundation)** - Mission, vision, essence, and strategic positioning
 - **[01: Product Portfolio](#document-01-product-portfolio)** - 13 premium products (8 dates + 5 nuts)
-- **[02: Sourcing Philosophy](#document-02-sourcing-philosophy)** - Global sourcing from 11 countries
+- **[02: Sourcing Philosophy](#document-02-sourcing-philosophy)** - Global sourcing from 10 countries
 - **[03: Hero Products](#document-03-hero-products)** - 2 standout products with unique features
 - **[04: Nutritional Excellence](#document-04-nutritional-excellence)** - Top 10 nutritional highlights
 - **[05: Fortune 500 Validation](#document-05-fortune-500-validation)** - Corporate trust and credibility
@@ -18,112 +18,13 @@
 ---
 
 ## DOCUMENT 00: Brand Foundation
-**Read Time**: 5 minutes | **Next**: [01 - Product Portfolio](#document-01-product-portfolio)
+**Read Time**: 8 minutes | **Next**: [01 - Product Portfolio](#document-01-product-portfolio)
 
-**What This Is**: Establish complete brand foundation - mission, vision, essence, strategic positioning, innovation DNA, category strategy, brand promise.
-
----
-
-## THE ESSENCE OF FLYBERRY
-
-> **"We reimagine food with artful nuance."**
-> Fine taste. Clean ingredients. World-class quality.
-
-Flyberry isn't another snack brand or dry fruit seller. We're a gourmet brand **relentlessly building to be #1 in every category we enter** - through obsessive sourcing, innovation, and craft.
-
-This is the foundation. This is who we are.
+**What This Is**: Our brand foundation
 
 ---
 
-## OUR MISSION
-
-To deliver India's finest-tasting gourmet products - sourced from the world's best origins, crafted with obsessive quality control, and made with nothing but natural goodness.
-
-No nasties. No compromises. Just exceptional taste and quality you can trust.
-
----
-
-## OUR VISION
-
-To be the default choice for discerning Indians who refuse to settle - the place you turn to when only the finest taste, cleanest ingredients, and world-class quality will do.
-
----
-
-## STRATEGIC POSITIONING
-
-### WHAT MAKES FLYBERRY DIFFERENT
-
-We don't just compete in categories - we're relentlessly building to dominate them.
-
-Our obsession: Create #1 products in every category we enter - #1 in taste, #1 in quality, #1 in ingredients.
-
-How we're building category leadership:
-
-- Premium dates → Building to be #1 through cold chain innovation (India's only)
-- Gourmet vegetable chips → Building to be #1 in okra chips, vacuum-fried excellence
-- Exotic nuts → Building to be #1 in variety (Afghan pine nuts, Australian macadamia)
-
-This isn't about quick wins - it's about relentless pursuit of excellence through:
-
-- Fine taste: World-class inputs from 11 countries, craft expertise, innovation
-- Clean ingredients: 100% natural, no nasties, transparent sourcing
-- Uncompromising quality: Standards so high, Fortune 500 companies trust us
-
----
-
-## INNOVATION DNA
-
-### THE CORE QUESTION
-
-"What if everyday foods - okra, dates, nuts - could be transformed through imagination, taste, and craft? What if we applied world-class innovation to what people already know and love?"
-
-This isn't about creating another snack brand or dry fruit seller.
-
-This is about reimagining food itself - taking what exists and making it extraordinary through innovation and craftsmanship, then becoming the undisputed #1.
-
----
-
-## THE CUSTOMER TRUTH
-
-You know okra. You know dates. You know nuts.
-
-But you've never tasted them like this.
-
-You taste the difference. Softer dates. Vegetable chips that actually taste like vegetables. Nuts with flavor profiles you didn't know existed.
-
-Flyberry takes foods you recognize and transforms them through:
-
-- Fine taste: Vacuum-fried technology, premium sourcing, craft expertise
-- Clean ingredients: Natural goodness, no nasties, transparent origins
-- World-class quality: Standards so high, Fortune 500 companies trust us
-
----
-
-## BRAND PROMISE
-
-#1 in quality. #1 in innovation. #1 in every category we choose to enter.
-
-Relentless pursuit of #1 in every category we enter.
-
-Our Pillars:
-
-✅ Fine taste - Best-in-class inputs, world-class sourcing, craft innovation
-
-✅ Clean goodness - 100% natural, no nasties, transparent origins
-
-✅ Trusted quality - Fortune 500 companies, obsessive QC
-
-✅ Category ambition - Building to dominate through excellence, not shortcuts
-
----
-
-## YOU EXPERIENCE THE DIFFERENCE
-
-You taste the difference.
-
-You trust the quality.
-
-You won't settle for less.
+*(Document 00 spec not found - using fallback)*
 
 ---
 
@@ -174,7 +75,7 @@ You won't settle for less.
 
 #### Ameri Dates
 **Tagline**: Alluring Ameri Dates
-- **Origin**: Imported Product of Jordan
+- **Origin**: Imported Product of Iraq
 - **Packaging Color**: Orange (#ff7e00)
 - **Description**: The date that leaves you wanting for more.
 
@@ -260,7 +161,7 @@ You won't settle for less.
 
 ### GLOBAL SOURCING NETWORK
 
-We source from **11 countries** to bring you the finest products:
+We source from **10 countries** to bring you the finest products:
 
 **Imported Product of Brazil / Bolivia**:
 - Products: Brazil Nuts
@@ -272,10 +173,7 @@ We source from **11 countries** to bring you the finest products:
 - Products: Kalmi Dates
 
 **Imported Product of Iraq**:
-- Products: Deri Dates, Halawi Dates
-
-**Imported Product of Jordan**:
-- Products: Ameri Dates
+- Products: Deri Dates, Ameri Dates, Halawi Dates
 
 **Imported Product of Jordan / Palestine**:
 - Products: Medjoul Dates
@@ -550,7 +448,7 @@ Products are kept at 5-10°C from origin to your door.
 
 **Data Sources**: products/brazil-nuts.json, products/medjoul-dates.json
 **Confidence**: 100% (all claims from product JSON, market data verified)
-**Last Updated**: 2025-10-23
+**Last Updated**: 2025-10-24
 
 *Continue to: [04 - Nutritional Excellence](#document-04-nutritional-excellence) → "Top nutritional highlights"*
 
@@ -746,7 +644,7 @@ Products are kept at 5-10°C from origin to your door.
 
 **Data Sources**: products/*.json, claims-registry.json
 **Confidence**: 100% (all claims FSSAI-compliant, lab-tested)
-**Last Updated**: 2025-10-23
+**Last Updated**: 2025-10-24
 
 *Continue to: [05 - Fortune 500 Validation](#document-05-fortune-500-validation) → "Corporate trust"*
 

@@ -1,0 +1,263 @@
+{
+  "timestamp": "2025-10-24T22:19:43.887547",
+  "summary": {
+    "total_tests": 48,
+    "passed": 48,
+    "failed": 0,
+    "warnings": 0,
+    "pass_rate": 100.0
+  },
+  "categories": {
+    "build": [
+      {
+        "test": "Build Process",
+        "status": "PASS",
+        "details": "Build completed successfully"
+      },
+      {
+        "test": "Generate act-1-who-we-are.html",
+        "status": "PASS",
+        "details": "Size: 36,598 bytes"
+      },
+      {
+        "test": "Generate act-2-where-we-are.html",
+        "status": "PASS",
+        "details": "Size: 15,425 bytes"
+      },
+      {
+        "test": "Generate act-3-discoveries.html",
+        "status": "PASS",
+        "details": "Size: 58,578 bytes"
+      },
+      {
+        "test": "Generate act-4-market-proof.html",
+        "status": "PASS",
+        "details": "Size: 41,236 bytes"
+      },
+      {
+        "test": "Generate act-5-where-to-go.html",
+        "status": "PASS",
+        "details": "Size: 60,179 bytes"
+      },
+      {
+        "test": "Index navigation page",
+        "status": "PASS",
+        "details": "Size: 6,040 bytes"
+      }
+    ],
+    "content": [
+      {
+        "test": "Product: Medjoul Dates",
+        "status": "PASS",
+        "details": "Found in Act 1"
+      },
+      {
+        "test": "Product: Ajwa Dates",
+        "status": "PASS",
+        "details": "Found in Act 1"
+      },
+      {
+        "test": "Product: Brazil Nuts",
+        "status": "PASS",
+        "details": "Found in Act 1"
+      },
+      {
+        "test": "Product: Macadamia Nuts",
+        "status": "PASS",
+        "details": "Found in Act 1"
+      },
+      {
+        "test": "Product Count",
+        "status": "PASS",
+        "details": "HTML: 13, Data: 13"
+      },
+      {
+        "test": "Brand Name",
+        "status": "PASS",
+        "details": "Flyberry brand name present"
+      },
+      {
+        "test": "Section: Origin Story",
+        "status": "PASS",
+        "details": "Section found"
+      },
+      {
+        "test": "Section: Product Portfolio",
+        "status": "PASS",
+        "details": "Section found"
+      },
+      {
+        "test": "Section: Brand Promise",
+        "status": "PASS",
+        "details": "Section found"
+      }
+    ],
+    "navigation": [
+      {
+        "test": "Index Page Links",
+        "status": "PASS",
+        "details": "Found 5 Act links"
+      },
+      {
+        "test": "Act 1 Navigation",
+        "status": "PASS",
+        "details": "Has nav and home link"
+      },
+      {
+        "test": "Act 2 Navigation",
+        "status": "PASS",
+        "details": "Has nav and home link"
+      },
+      {
+        "test": "Act 3 Navigation",
+        "status": "PASS",
+        "details": "Has nav and home link"
+      },
+      {
+        "test": "Act 4 Navigation",
+        "status": "PASS",
+        "details": "Has nav and home link"
+      },
+      {
+        "test": "Act 5 Navigation",
+        "status": "PASS",
+        "details": "Has nav and home link"
+      },
+      {
+        "test": "act-1-who-we-are.html Structure",
+        "status": "PASS",
+        "details": "Valid HTML structure"
+      },
+      {
+        "test": "act-5-where-to-go.html Structure",
+        "status": "PASS",
+        "details": "Valid HTML structure"
+      },
+      {
+        "test": "act-4-market-proof.html Structure",
+        "status": "PASS",
+        "details": "Valid HTML structure"
+      },
+      {
+        "test": "act-3-discoveries.html Structure",
+        "status": "PASS",
+        "details": "Valid HTML structure"
+      },
+      {
+        "test": "act-2-where-we-are.html Structure",
+        "status": "PASS",
+        "details": "Valid HTML structure"
+      }
+    ],
+    "data": [
+      {
+        "test": "Medjoul Name",
+        "status": "PASS",
+        "details": "Found: Medjoul Dates"
+      },
+      {
+        "test": "Medjoul Origin",
+        "status": "PASS",
+        "details": "Found: Imported Product of Jordan / Palestine"
+      },
+      {
+        "test": "Medjoul Tagline",
+        "status": "PASS",
+        "details": "Tagline displayed"
+      },
+      {
+        "test": "Recipe Data",
+        "status": "PASS",
+        "details": "11 recipes in system"
+      },
+      {
+        "test": "Financial Data",
+        "status": "PASS",
+        "details": "Found: revenue, growth, performance, FY"
+      },
+      {
+        "test": "Customer Segments",
+        "status": "PASS",
+        "details": "5 segments loaded"
+      }
+    ],
+    "user_experience": [
+      {
+        "test": "CSS Styles",
+        "status": "PASS",
+        "details": "Stylesheet present"
+      },
+      {
+        "test": "CSS Linked",
+        "status": "PASS",
+        "details": "Styles properly linked"
+      },
+      {
+        "test": "Heading Structure",
+        "status": "PASS",
+        "details": "3 H1, 8 H2 tags"
+      },
+      {
+        "test": "Content Formatting",
+        "status": "PASS",
+        "details": "134 paragraphs, 12 lists"
+      },
+      {
+        "test": "Page Size",
+        "status": "PASS",
+        "details": "Total: 0.21MB - Good for web"
+      },
+      {
+        "test": "Mobile Support",
+        "status": "PASS",
+        "details": "Viewport meta tag present"
+      },
+      {
+        "test": "Page Title",
+        "status": "PASS",
+        "details": "Title tag present"
+      },
+      {
+        "test": "Missing Data Detection",
+        "status": "PASS",
+        "details": "Detected 6 missing files"
+      },
+      {
+        "test": "Track customer-testimonial...",
+        "status": "PASS",
+        "details": "Correctly identified as missing"
+      },
+      {
+        "test": "Track market-trends-refere...",
+        "status": "PASS",
+        "details": "Correctly identified as missing"
+      },
+      {
+        "test": "Track market-size-referenc...",
+        "status": "PASS",
+        "details": "Correctly identified as missing"
+      },
+      {
+        "test": "Track market-validation-re...",
+        "status": "PASS",
+        "details": "Correctly identified as missing"
+      },
+      {
+        "test": "Track trend-analysis-refer...",
+        "status": "PASS",
+        "details": "Correctly identified as missing"
+      },
+      {
+        "test": "Track expansion-opportunit...",
+        "status": "PASS",
+        "details": "Correctly identified as missing"
+      },
+      {
+        "test": "Reference Files",
+        "status": "PASS",
+        "details": "Found 1 reference file(s)"
+      }
+    ]
+  },
+  "verdict": "PASSED"
+}

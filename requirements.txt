@@ -1,0 +1,12 @@
+# Flyberry Brand Package Dependencies
+# Updated: October 24, 2025
+# Python >= 3.9 required (3.12+ recommended)
+
+# Core dependencies - Latest stable versions
+markdown==3.9.0        # Markdown to HTML conversion
+jinja2==3.1.6         # Template engine
+anthropic==0.71.0     # Claude API SDK
+
+# Optional for testing
+pytest>=8.3.0         # Testing framework
+pytest-asyncio>=0.24.0  # Async test support

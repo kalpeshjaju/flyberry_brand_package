@@ -1,0 +1,87 @@
+{
+  "timestamp": "2025-10-24T22:08:24.479333",
+  "summary": {
+    "total": 14,
+    "passed": 13,
+    "failed": 1,
+    "success_rate": 92.85714285714286,
+    "status": "WARN"
+  },
+  "results": [
+    {
+      "test": "Package Versions",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Data Directory Structure",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Data Loading",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Data Lineage",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Data Integration",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Reference Data System",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Anti-Hallucination Validator",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Markdown Processing",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Jinja2 Template Rendering",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Build Script Import",
+      "status": "FAIL",
+      "details": "Returned False"
+    },
+    {
+      "test": "Generator Modules",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "HTML Output Files",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Asset Files",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test": "Data Loading Speed",
+      "status": "PASS",
+      "details": ""
+    }
+  ],
+  "environment": {
+    "python_version": "3.9.6",
+    "platform": "darwin",
+    "working_dir": "/Users/kalpeshjaju/Development/flyberry_brand_package"
+  }
+}
