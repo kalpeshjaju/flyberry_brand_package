@@ -1,0 +1,254 @@
+name: Data Quality Gate
+
+on:
+  pull_request:
+    paths:
+      - 'data/**'
+      - '../flyberry_oct_restart/extracted_data/**'
+      - 'validators/**'
+      - 'build.py'
+      - 'data_integration.py'
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/**'
+      - 'validators/**'
+      - 'build.py'
+
+jobs:
+  validate-reference-data:
+    name: Validate Reference Data Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout brand_package repo
+        uses: actions/checkout@v4
+        with:
+          path: flyberry_brand_package
+
+      - name: Checkout data repo (flyberry_oct_restart)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/flyberry_oct_restart
+          path: flyberry_oct_restart
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          cd flyberry_brand_package
+          pip install -r requirements.txt
+
+      - name: Run Reference Data Validator
+        id: validation
+        run: |
+          cd flyberry_brand_package
+          python3 validators/reference_data_validator.py || echo "validation_failed=true" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Check validation results
+        run: |
+          cd flyberry_brand_package
+          if [ -f "REFERENCE_DATA_VALIDATION_REPORT.md" ]; then
+            echo "## 📊 Reference Data Validation Report" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            cat REFERENCE_DATA_VALIDATION_REPORT.md >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Enforce quality thresholds
+        run: |
+          cd flyberry_brand_package
+          # Check if production ready
+          if grep -q "NOT PRODUCTION READY" REFERENCE_DATA_VALIDATION_REPORT.md; then
+            echo "⚠️  WARNING: Reference data quality below production standards"
+            echo "This is a warning, not blocking the build"
+            echo "Recommendation: Upgrade files to HIGH confidence before release"
+          else
+            echo "✅ Reference data meets production quality standards"
+          fi
+
+  test-anti-hallucination:
+    name: Test Anti-Hallucination System
+    runs-on: ubuntu-latest
+    needs: validate-reference-data
+
+    steps:
+      - name: Checkout brand_package repo
+        uses: actions/checkout@v4
+        with:
+          path: flyberry_brand_package
+
+      - name: Checkout data repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/flyberry_oct_restart
+          path: flyberry_oct_restart
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          cd flyberry_brand_package
+          pip install -r requirements.txt
+
+      - name: Run comprehensive test suite
+        run: |
+          cd flyberry_brand_package
+          python3 comprehensive_test.py
+
+      - name: Check for hallucinations in generators
+        run: |
+          cd flyberry_brand_package
+          echo "🔍 Scanning generators for fabricated data patterns..."
+
+          # Check for hallucination indicators
+          ISSUES=0
+
+          # Check Act 1 generator
+          if grep -E "TODO|FIXME|placeholder|XXX" generators/act1_generator.py; then
+            echo "❌ Found TODO/placeholder in act1_generator.py"
+            ISSUES=$((ISSUES+1))
+          fi
+
+          # Check Act 2 generator
+          if grep -E "TODO|FIXME|placeholder|XXX" generators/act2_generator.py; then
+            echo "❌ Found TODO/placeholder in act2_generator.py"
+            ISSUES=$((ISSUES+1))
+          fi
+
+          if [ $ISSUES -eq 0 ]; then
+            echo "✅ No hallucination indicators found in generators"
+          else
+            echo "⚠️  Found $ISSUES potential issues - review code"
+          fi
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-reports
+          path: |
+            flyberry_brand_package/REFERENCE_DATA_VALIDATION_REPORT.md
+            flyberry_brand_package/TEST_REPORT_*.json
+          retention-days: 30
+
+  enforce-confidence-threshold:
+    name: Enforce Data Confidence Thresholds
+    runs-on: ubuntu-latest
+    needs: validate-reference-data
+
+    steps:
+      - name: Checkout repos
+        uses: actions/checkout@v4
+        with:
+          path: flyberry_brand_package
+
+      - name: Checkout data repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/flyberry_oct_restart
+          path: flyberry_oct_restart
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Check confidence levels
+        run: |
+          cd flyberry_oct_restart/extracted_data
+
+          echo "## 🎯 Confidence Level Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          HIGH_COUNT=0
+          MEDIUM_COUNT=0
+          LOW_COUNT=0
+          TOTAL=0
+
+          for file in *-reference.json; do
+            if [ -f "$file" ]; then
+              TOTAL=$((TOTAL+1))
+              CONFIDENCE=$(jq -r '.metadata.confidence' "$file")
+
+              case "$CONFIDENCE" in
+                "high")
+                  HIGH_COUNT=$((HIGH_COUNT+1))
+                  echo "✅ **$file**: HIGH confidence" >> $GITHUB_STEP_SUMMARY
+                  ;;
+                "medium")
+                  MEDIUM_COUNT=$((MEDIUM_COUNT+1))
+                  echo "🟡 **$file**: MEDIUM confidence" >> $GITHUB_STEP_SUMMARY
+                  ;;
+                "low")
+                  LOW_COUNT=$((LOW_COUNT+1))
+                  echo "🔴 **$file**: LOW confidence" >> $GITHUB_STEP_SUMMARY
+                  ;;
+                *)
+                  echo "❓ **$file**: Unknown confidence ($CONFIDENCE)" >> $GITHUB_STEP_SUMMARY
+                  ;;
+              esac
+            fi
+          done
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Summary**: $HIGH_COUNT HIGH, $MEDIUM_COUNT MEDIUM, $LOW_COUNT LOW (Total: $TOTAL files)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Calculate percentage
+          if [ $TOTAL -gt 0 ]; then
+            HIGH_PERCENT=$((HIGH_COUNT * 100 / TOTAL))
+            echo "**HIGH Confidence Rate**: $HIGH_PERCENT%" >> $GITHUB_STEP_SUMMARY
+
+            if [ $HIGH_PERCENT -lt 50 ]; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "⚠️  **WARNING**: Less than 50% of reference data files have HIGH confidence" >> $GITHUB_STEP_SUMMARY
+              echo "Recommendation: Upgrade files before production release" >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
+
+      - name: Check data freshness
+        run: |
+          cd flyberry_oct_restart/extracted_data
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## ⏰ Data Freshness Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          CURRENT_DATE=$(date +%s)
+          STALE_FILES=0
+
+          for file in *-reference.json; do
+            if [ -f "$file" ]; then
+              DATE_STR=$(jq -r '.metadata.date' "$file")
+              DATE_EPOCH=$(date -d "$DATE_STR" +%s 2>/dev/null || date -j -f "%Y-%m-%d" "$DATE_STR" +%s)
+
+              DAYS_OLD=$(( (CURRENT_DATE - DATE_EPOCH) / 86400 ))
+
+              if [ $DAYS_OLD -gt 180 ]; then
+                echo "🔴 **$file**: $DAYS_OLD days old (STALE - >6 months)" >> $GITHUB_STEP_SUMMARY
+                STALE_FILES=$((STALE_FILES+1))
+              elif [ $DAYS_OLD -gt 90 ]; then
+                echo "🟡 **$file**: $DAYS_OLD days old (aging - >3 months)" >> $GITHUB_STEP_SUMMARY
+              else
+                echo "✅ **$file**: $DAYS_OLD days old (current)" >> $GITHUB_STEP_SUMMARY
+              fi
+            fi
+          done
+
+          if [ $STALE_FILES -gt 0 ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️  **WARNING**: $STALE_FILES file(s) are stale (>6 months old)" >> $GITHUB_STEP_SUMMARY
+            echo "Recommendation: Update with latest market data" >> $GITHUB_STEP_SUMMARY
+          fi

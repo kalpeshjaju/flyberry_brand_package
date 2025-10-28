@@ -376,8 +376,38 @@ def build_all():
     data_source = get_data_source()
     print()
 
-    # Check for missing reference data
-    print("🔍 Checking data completeness...")
+    # STEP 1: Run reference data validation
+    print("🔍 Step 1: Validating reference data quality...")
+    print()
+
+    # Import validation tools
+    from validators.reference_data_validator import ReferenceDataValidator
+    from validators.hallucination_guard import HallucinationGuard
+
+    # Get data directory path
+    input_dir = Path(__file__).parent.parent / "flyberry_oct_restart"
+    data_dir = input_dir / "extracted_data"
+
+    if not data_dir.exists():
+        print(f"⚠️  Warning: Data directory not found: {data_dir}")
+        print("   Skipping validation...")
+    else:
+        # Run reference data validation
+        validator = ReferenceDataValidator(str(data_dir))
+        validation_report = validator.validate_all_reference_files()
+
+        # Check if production-ready
+        if not validation_report["production_ready"]:
+            print("\n⚠️  VALIDATION WARNING:")
+            print(f"   Reference data quality: {validation_report['by_confidence']['high']}/{validation_report['total_files']} HIGH confidence")
+            print(f"   Recommendation: Upgrade files to HIGH confidence before production use")
+            print(f"   Current state: OK for development, needs improvement for investor/regulatory use")
+            print()
+        else:
+            print("✅ Reference data validation passed!\n")
+
+    # STEP 2: Check for missing reference data
+    print("🔍 Step 2: Checking data completeness...")
     missing_data = data_source.check_data_completeness()
 
     if missing_data:
@@ -409,6 +439,15 @@ def build_all():
             print("\n⚠️  Continuing with gaps. Some sections may be incomplete.\n")
     else:
         print("✅ All reference data available!\n")
+
+    # STEP 3: Initialize hallucination guard
+    print("🛡️  Step 3: Initializing anti-hallucination guard...")
+    if data_dir.exists():
+        hallucination_guard = HallucinationGuard(data_source.data, str(data_dir))
+        print("✅ Hallucination guard active - 3-checkpoint verification enabled\n")
+    else:
+        hallucination_guard = None
+        print("⚠️  Hallucination guard skipped (data directory not found)\n")
 
     # Generate dynamic content from structured data
     print("📝 Generating Acts from structured data...")
