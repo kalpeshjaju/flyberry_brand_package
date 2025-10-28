@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Data lineage, claims registry, product catalog, design assets, and reports">
+    <title>Act 6: APPENDIX | Flyberry Brand Package</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+</head>
+<body class="act-6 appendix">
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">
+                    <a href="index.html">Flyberry Brand Package</a>
+                </h1>
+                <nav class="header-nav">
+                    <a href="act-1-who-we-are.html" class="nav-link ">Act 1</a>
+                    <a href="act-2-where-we-are.html" class="nav-link ">Act 2</a>
+                    <a href="act-3-discoveries.html" class="nav-link ">Act 3</a>
+                    <a href="act-4-market-proof.html" class="nav-link ">Act 4</a>
+                    <a href="act-5-where-to-go.html" class="nav-link ">Act 5</a>
+                    <a href="appendix.html" class="nav-link active">Appendix</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="act-header">
+                <div class="act-number">Act 6</div>
+                <h1 class="act-title">APPENDIX</h1>
+                <p class="act-subtitle">Supporting Documentation</p>
+            </div>
+
+            <div class="act-body">
+                <h1 id="appendix">APPENDIX</h1>
+<p><strong>Supporting Documentation</strong></p>
+<p>Additional resources: data lineage, claims registry, product catalog references, design assets, and validation reports.</p>
+<hr />
+<h2 id="quick-navigation">Quick Navigation</h2>
+<ul>
+<li><strong><a href="#document-00-data-sources--lineage">00: Data Sources &amp; Lineage</a></strong> – Where each claim/data point comes from</li>
+<li><strong><a href="#document-01-claims-registry">01: Claims Registry</a></strong> – Health, nutritional, and product claims tracking</li>
+<li><strong><a href="#document-02-product-catalog-summary">02: Product Catalog Summary</a></strong> – Master list and identifiers</li>
+<li><strong><a href="#document-03-design-system--assets">03: Design System &amp; Assets</a></strong> – CSS, components, and brand usage</li>
+<li><strong><a href="#document-04-test--validation-reports">04: Test &amp; Validation Reports</a></strong> – Build, content, and product validation</li>
+<li><strong><a href="#document-05-technical-stack-summary">05: Technical Stack Summary</a></strong> – Project structure and tech overview</li>
+</ul>
+<hr />
+<div class="document-section doc-00"><h2 class="doc-title" id="document-00-data-sources-lineage">DOCUMENT 00: Data Sources &amp; Lineage</h2>
+<p><strong>What This Is</strong>: Overview of structured inputs and how data flows into generated outputs.</p>
+<h3 id="pipeline-overview">PIPELINE OVERVIEW</h3>
+<pre><code>raw_data/ → llm_readable/ → extracted_data/ → generators/ → HTML output
+</code></pre>
+<h3 id="key-references">KEY REFERENCES</h3>
+<ul>
+<li>System analysis: <code>FLYBERRY_OCT_RESTART_ANALYSIS_2025-10-24.md</code></li>
+<li>Reference system: <code>REFERENCE_DATA_SYSTEM.md</code></li>
+<li>Research tasks: <code>RESEARCH_NEEDED.md</code></li>
+</ul>
+<hr />
+</div><div class="document-section doc-01"><h2 class="doc-title" id="document-01-claims-registry">DOCUMENT 01: Claims Registry</h2>
+<p><strong>Purpose</strong>: Track claims, their sources, and verification status.</p>
+<ul>
+<li>Health/nutritional claims: maintained under the data source repository</li>
+<li>Verification: marked with confidence and source linkage</li>
+<li>Anti‑hallucination validator: <code>generators/anti_hallucination_validator.py</code></li>
+</ul>
+<hr />
+</div><div class="document-section doc-02"><h2 class="doc-title" id="document-02-product-catalog-summary">DOCUMENT 02: Product Catalog Summary</h2>
+<p><strong>Purpose</strong>: At‑a‑glance summary of products listed in Act 1.</p>
+<ul>
+<li>13 products (8 date varieties + 5 exotic nuts)</li>
+<li>Names, origins, and taglines are rendered in Act 1 from structured data</li>
+</ul>
+<hr />
+</div><div class="document-section doc-03"><h2 class="doc-title" id="document-03-design-system-assets">DOCUMENT 03: Design System &amp; Assets</h2>
+<p><strong>Purpose</strong>: Where to find CSS, components, and any custom styling per page.</p>
+<ul>
+<li>Global styles: <code>assets/css/styles.css</code></li>
+<li>Per‑page custom CSS (if present): <code>assets/css/&lt;page&gt;-custom.css</code></li>
+<li>Template used: <code>templates/act.html</code></li>
+</ul>
+<hr />
+</div><div class="document-section doc-04"><h2 class="doc-title" id="document-04-test-validation-reports">DOCUMENT 04: Test &amp; Validation Reports</h2>
+<p><strong>Purpose</strong>: Consolidated pointers to quality checks and outcomes.</p>
+<ul>
+<li>Product Validation Report: <code>PRODUCT_VALIDATION_REPORT_2025-10-24.md</code></li>
+<li>Product Test Report (JSON): <code>PRODUCT_TEST_REPORT.json</code></li>
+<li>Final Test Summary: <code>FINAL_TEST_REPORT_2025-10-24.md</code></li>
+</ul>
+<hr />
+</div><div class="document-section doc-05"><h2 class="doc-title" id="document-05-technical-stack-summary">DOCUMENT 05: Technical Stack Summary</h2>
+<p><strong>Purpose</strong>: Quick reference for developers/operators.</p>
+<ul>
+<li>Entry point: <code>build.py</code></li>
+<li>Generators: <code>generators/act1_generator.py</code>, <code>generators/act2_generator.py</code></li>
+<li>Data source connector: <code>data_integration.py</code></li>
+<li>Output: <code>docs/</code></li>
+</ul>
+<blockquote>
+<p>Note: Acts 3–5 are currently authored as Markdown in <code>source/</code> and will be migrated to structured data generation.</p>
+</blockquote></div>
+            </div>
+
+            <nav class="act-navigation">
+                
+                <a href="act-5-where-to-go.html" class="nav-button secondary">
+                    ← Previous: WHERE WE SHOULD GO
+                </a>
+                
+
+                
+                <div></div>
+                
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Flyberry Brand Package | Version 1.0 | Last Updated: 2025-10-28</p>
+                <p>Strategic Direction for ₹35 Cr → ₹100 Cr Growth Journey</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

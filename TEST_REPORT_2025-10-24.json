@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-10-24T22:08:24.479333",
+  "timestamp": "2025-10-28T12:20:22.753015",
   "summary": {
     "total": 14,
-    "passed": 13,
-    "failed": 1,
-    "success_rate": 92.85714285714286,
-    "status": "WARN"
+    "passed": 14,
+    "failed": 0,
+    "success_rate": 100.0,
+    "status": "PASS"
   },
   "results": [
     {
@@ -55,8 +55,8 @@
     },
     {
       "test": "Build Script Import",
-      "status": "FAIL",
-      "details": "Returned False"
+      "status": "PASS",
+      "details": ""
     },
     {
       "test": "Generator Modules",

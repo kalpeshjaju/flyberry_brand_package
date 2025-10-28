@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-10-24T22:19:43.887547",
+  "timestamp": "2025-10-28T12:19:13.459933",
   "summary": {
-    "total_tests": 48,
-    "passed": 48,
+    "total_tests": 42,
+    "passed": 41,
     "failed": 0,
     "warnings": 0,
-    "pass_rate": 100.0
+    "pass_rate": 97.61904761904762
   },
   "categories": {
     "build": [
@@ -17,32 +17,32 @@
       {
         "test": "Generate act-1-who-we-are.html",
         "status": "PASS",
-        "details": "Size: 36,598 bytes"
+        "details": "Size: 36,673 bytes"
       },
       {
         "test": "Generate act-2-where-we-are.html",
         "status": "PASS",
-        "details": "Size: 15,425 bytes"
+        "details": "Size: 15,500 bytes"
       },
       {
         "test": "Generate act-3-discoveries.html",
         "status": "PASS",
-        "details": "Size: 58,578 bytes"
+        "details": "Size: 58,653 bytes"
       },
       {
         "test": "Generate act-4-market-proof.html",
         "status": "PASS",
-        "details": "Size: 41,236 bytes"
+        "details": "Size: 41,311 bytes"
       },
       {
         "test": "Generate act-5-where-to-go.html",
         "status": "PASS",
-        "details": "Size: 60,179 bytes"
+        "details": "Size: 60,346 bytes"
       },
       {
         "test": "Index navigation page",
         "status": "PASS",
-        "details": "Size: 6,040 bytes"
+        "details": "Size: 6,009 bytes"
       }
     ],
     "content": [
@@ -219,43 +219,13 @@
       },
       {
         "test": "Missing Data Detection",
-        "status": "PASS",
-        "details": "Detected 6 missing files"
-      },
-      {
-        "test": "Track customer-testimonial...",
-        "status": "PASS",
-        "details": "Correctly identified as missing"
-      },
-      {
-        "test": "Track market-trends-refere...",
-        "status": "PASS",
-        "details": "Correctly identified as missing"
-      },
-      {
-        "test": "Track market-size-referenc...",
-        "status": "PASS",
-        "details": "Correctly identified as missing"
-      },
-      {
-        "test": "Track market-validation-re...",
-        "status": "PASS",
-        "details": "Correctly identified as missing"
-      },
-      {
-        "test": "Track trend-analysis-refer...",
-        "status": "PASS",
-        "details": "Correctly identified as missing"
-      },
-      {
-        "test": "Track expansion-opportunit...",
-        "status": "PASS",
-        "details": "Correctly identified as missing"
+        "status": "INFO",
+        "details": "All reference data present"
       },
       {
         "test": "Reference Files",
         "status": "PASS",
-        "details": "Found 1 reference file(s)"
+        "details": "Found 7 reference file(s)"
       }
     ]
   },

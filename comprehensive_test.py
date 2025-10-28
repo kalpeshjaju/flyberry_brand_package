@@ -369,16 +369,26 @@ print(f"\n{YELLOW}=== SECTION 5: Build Pipeline Tests ==={NC}")
 
 @test_case("Build Script Import", "Test build.py can be imported")
 def test_build_imports():
-    """Test that build script and its dependencies load"""
+    """Test that build script and its dependencies load (resolve local build.py explicitly)"""
     try:
-        # Change to correct directory
-        os.chdir('/Users/kalpeshjaju/Development/flyberry_brand_package')
+        import importlib.util
+        pkg_dir = '/Users/kalpeshjaju/Development/flyberry_brand_package'
+        build_path = os.path.join(pkg_dir, 'build.py')
 
-        # Try importing key functions
-        from build import generate_research_tasks, build_act
+        spec = importlib.util.spec_from_file_location('brand_pkg_build', build_path)
+        if spec is None or spec.loader is None:
+            print("    Unable to create import spec for build.py")
+            return False
 
-        print(f"    ✅ Build functions imported successfully")
-        return True
+        build_mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(build_mod)
+
+        # Verify required callables exist
+        has_gen = hasattr(build_mod, 'generate_research_tasks')
+        has_build_act = hasattr(build_mod, 'build_act')
+        print(f"    generate_research_tasks: {'✅' if has_gen else '❌'}  build_act: {'✅' if has_build_act else '❌'}")
+
+        return has_gen and has_build_act
 
     except Exception as e:
         print(f"    Error importing build: {e}")

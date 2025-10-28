@@ -448,7 +448,7 @@ Products are kept at 5-10°C from origin to your door.
 
 **Data Sources**: products/brazil-nuts.json, products/medjoul-dates.json
 **Confidence**: 100% (all claims from product JSON, market data verified)
-**Last Updated**: 2025-10-24
+**Last Updated**: 2025-10-28
 
 *Continue to: [04 - Nutritional Excellence](#document-04-nutritional-excellence) → "Top nutritional highlights"*
 
@@ -644,7 +644,7 @@ Products are kept at 5-10°C from origin to your door.
 
 **Data Sources**: products/*.json, claims-registry.json
 **Confidence**: 100% (all claims FSSAI-compliant, lab-tested)
-**Last Updated**: 2025-10-24
+**Last Updated**: 2025-10-28
 
 *Continue to: [05 - Fortune 500 Validation](#document-05-fortune-500-validation) → "Corporate trust"*
 
